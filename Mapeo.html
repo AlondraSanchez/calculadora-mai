@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Mapeo bilineal</title>
+        <link rel="stylesheet" href="css/estilito.css">
+        <script src="js/mathjs.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js/mapeo.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <center>
+        <div class="cajita">
+            <h1>Mapeos bilineales</h1>
+            <p>
+                Inserta los valores a, b, c, d de la ecuaci&oacuten de la circunferencia<br>
+                <input type="number" id="a" placeholder="a" style="text-align: center; width: 100px">
+                    (x<sup>2</sup> + y<sup>2</sup>) +
+                <input type="number" id="b" placeholder="b" style="text-align: center; width: 100px">x + 
+                <input type="number" id="c" placeholder="c" style="text-align: center; width: 100px">y +
+                <input type="number" id="d" placeholder="d" style="text-align: center; width: 100px"> = 0
+            </p>
+            <p>
+                Inserte valores para &alpha;, &beta;, &gamma;, &delta;<br>
+                f(z) = (
+                <input type="number" id="alpha" placeholder="&alpha;" style="text-align: center; width: 100px">z +
+                <input type="number" id="beta" placeholder="&beta;" style="text-align: center; width: 100px">) / (
+                <input type="number" id="gamma" placeholder="&gamma;" style="text-align: center; width: 100px">z +
+                <input type="number" id="delta" placeholder="&delta;" style="text-align: center; width: 100px">)
+            </p>
+            <!-- B O T O N E S -->
+            <p>
+            <a style="color: #5b2e35; background-color: #f5e4c3;
+                text-decoration:none; padding: 10px; border-radius: 15px;"
+                onclick="validar()">Resolver
+            </a> &nbsp; &nbsp;
+            <a style="color: #5b2e35; background-color: #f5e4c3;
+                text-decoration:none; padding: 10px; border-radius: 15px;"
+                onclick="location.reload()">Limpiar
+            </a> &nbsp; &nbsp; 
+            <a style="color: #5b2e35; background-color: #f5e4c3;
+                text-decoration:none; padding: 10px; border-radius: 15px;"
+                href="index.html">Regresar
+            </a>
+            <!-- F I N B O T O N E S -->
+            </p>
+        </div>
+        <br><br>
+        <div class="cajita" id="resultados" style="display:none;"> </div>
+        <br>
+        <div class="cajita" id="graficas" style="display:block">
+            <table width = 80% align= "center">
+                <tr>
+                    <td width="50%">
+                        <p>Original</p><div id="original1"></div>
+                    </td>
+                    <td width="50%">
+                        <p>Mapeo bilineal</p><div id="mapeado1"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <center>
+                        <canvas id="original" 
+                                width="300" 
+                                height="300" 
+                                style="border:1px solid #000000; 
+                                background-color: #f5e4c3;"></canvas>
+                        </center>
+                    </td>
+                    <td>
+                        <center>
+                        <canvas id="mapeado" 
+                                width="300" 
+                                height="300" 
+                                style="border:1px solid #000000; 
+                                background-color: #f5e4c3;"></canvas>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+    </body>
+</html>

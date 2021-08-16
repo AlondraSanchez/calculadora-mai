@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/estilito.css">
+        <script src="js/mathjs.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js/funciones.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Calculadora funciones</title> 
+    </head>
+    <body>  
+    <center>
+        <div class="cajita">
+            <h1>Calculadora de funciones complejas</h1>
+            <table width=90% align="center">
+                <tr align="left">
+                    <td valign="middle" colspan="4">
+                        <p style="margin: 15px">
+                            z = <input type="number" id="a"> + <b>i</b> <input type="number" id="b">
+                            <br>
+                            z<sub>2</sub> = <input type="number" id="c"> + <b>i</b> <input type="number" id="d">
+                        
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%">
+                        <p style="font-size: 200%; margin: 0px; text-align: left">
+						<input type="checkbox" id="todoF" onclick="seleccionarTodoF()"> Funciones
+						</p>
+                    </td>
+                    <td colspan="2">
+                        <p style="font-size: 200%; margin: 0px; text-align: left">
+                            <input type="checkbox" id="todoFi" onclick="seleccionarTodoFI()"> Funciones inversas
+						</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="25%">
+                        <p style="font-size: 200%; text-align: left; margin: 0px">
+                        
+                        <input type="checkbox" id="e"> e<sup>z</sup><br>
+                        <input type="checkbox" id="zz"> z<sup>z<sub>2</sub></sup><br>
+                        <input type="checkbox" id="sen"> Sen(z)<br>
+                        <input type="checkbox" id="cos"> Cos(z)<br>
+                        <input type="checkbox" id="tan"> Tan(z)<br>
+                        </p> 
+                    </td>
+                    <td width="25%">
+                        <p style="font-size: 200%; text-align: left; margin: 10px">
+                        <input type="checkbox" id="ctg"> Ctg(z)<br>
+                        <input type="checkbox" id="sec"> Sec(z)<br>
+                        <input type="checkbox" id="csc"> Csc(z)<br>
+                        <input type="checkbox" id="senh"> Senh(z)<br>
+                        <input type="checkbox" id="cosh"> Cosh(z)<br>
+                        </p>
+                    </td>
+                    <td width="25%">
+                        <p style="font-size: 200%; text-align: left; margin: 0px">
+                        
+                        
+                        <input type="checkbox" id="ln"> Ln(z)<br>
+                        <input type="checkbox" id="asen"> Sen<sup>-1</sup>(z)<br>
+                        <input type="checkbox" id="acos"> Cos<sup>-1</sup>(z)<br>
+                        <input type="checkbox" id="atan"> Tan<sup>-1</sup>(z)<br>
+                        </p> 
+                    </td>
+                    <td width="25%">
+                        <p style="font-size: 200%; text-align: left; margin: 0px">
+                        <input type="checkbox" id="actg"> Ctg<sup>-1</sup>(z)<br>
+                        <input type="checkbox" id="asec"> Sec<sup>-1</sup>(z)<br>
+                        <input type="checkbox" id="acsc"> Csc<sup>-1</sup>(z)<br>
+                        <input type="checkbox" id="asenh"> Senh<sup>-1</sup>(z)<br>
+                        <input type="checkbox" id="acosh"> Cosh<sup>-1</sup>(z)<br>
+                        </p>
+                    </td>
+                </tr>
+                
+            </table>
+            
+            <!-- B O T O N E S -->
+            <p>
+            <a style="color: #5b2e35; background-color: #f5e4c3;
+                text-decoration:none; padding: 10px; border-radius: 15px;"
+                onclick="validar()">Resolver
+            </a> &nbsp; &nbsp;
+            <a style="color: #5b2e35; background-color: #f5e4c3;
+                text-decoration:none; padding: 10px; border-radius: 15px;"
+                onclick="location.reload()">Limpiar
+            </a> &nbsp; &nbsp; 
+            <a style="color: #5b2e35; background-color: #f5e4c3;
+                text-decoration:none; padding: 10px; border-radius: 15px;"
+                href="index.html">Regresar
+            </a>
+            <!-- F I N B O T O N E S -->
+            </p>
+        </div>  
+        <br><br>
+        <div class="cajita" id="resultados" style="display:none;"> </div>
+            <br><br>
+            <div class="cajita" id="graficasF" style="display:none">
+            <table width = 80% align= "center">
+            <tr>
+                <td> <p> e<sup>z</sup> </p><div id="ce1"></div>
+		</td>
+                <td> <p> z<sup>z<sub>2</sub></sup> </p> <div id="czz1"></div></td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas id="ce" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                <center>
+                    <canvas id="czz"
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+            </tr>
+                
+                <tr>
+                <td> <p> Seno </p>
+					<div id="cSen1"></div>
+				</td>
+                <td> <p> Coseno </p> <div id="cCos1"></div></td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas id="cSen" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                <center>
+                    <canvas id="cCos"
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td> <p> Tangente </p> <div id="cTan1"></div></td>
+                <td> <p> Cotangente </p> <div id="cCtg1"></div></td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas 
+                        id="cTan" 
+                        width="300" height="300" 
+                        style="border:1px solid #000000; 
+                        background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                <center>
+                    <canvas id="cCtg" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td> <p> Secante </p> <div id="cSec1"></div></td>
+                <td> <p> Cosecante </p> <div id="cCsc1"></div></td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas id="cSec" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                <center>
+                    <canvas id="cCsc" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td> <p> Senh </p>
+					<div id="cSenh1"></div>
+				</td>
+                <td> <p> Cosh </p> <div id="cCosh1"></div></td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas id="cSenh" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                <center>
+                    <canvas id="cCosh"
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td> <p> Arcsen </p> <div id="aSen1"></div></td>
+                <td> <p> Arccos </p> <div id="aCos1"></div></td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas id="aSen" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                <center>
+                        <canvas id="aCos" 
+                                width="300" height="300"
+                                style="border:1px solid #000000;
+                                background-color: #f5e4c3;"></canvas>
+                        </center>
+                </td>
+            </tr>
+            <tr>
+                <td> <p> Arctan </p> <div id="aTan1"></div></td>
+                <td> <p> Arcctg </p> <div id="aCtg1"></div></td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas id="aTan" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                <center>
+                        <canvas id="aCtg" 
+                                width="300" height="300"
+                                style="border:1px solid #000000;
+                                background-color: #f5e4c3;"></canvas>
+                        </center>
+                </td>
+            </tr>
+            <tr>
+                <td> <p> Arcsec </p> <div id="aSec1"></div></td>
+                <td> <p> Arccsc </p> <div id="aCsc1"></div></td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas id="aSec" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                <center>
+                        <canvas id="aCsc" 
+                                width="300" height="300"
+                                style="border:1px solid #000000;
+                                background-color: #f5e4c3;"></canvas>
+                        </center>
+                </td>
+            </tr>
+            
+            <tr>
+                <td> <p> Arcsenh </p> <div id="aSenh1"></div></td>
+                <td> <p> Arccosh </p> <div id="aCosh1"></div></td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas id="aSenh" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                <center>
+                        <canvas id="aCosh" 
+                                width="300" height="300"
+                                style="border:1px solid #000000;
+                                background-color: #f5e4c3;"></canvas>
+                        </center>
+                </td>
+            </tr>
+            
+            <tr>
+                <td> <p> Ln </p>
+                    <div id="cLn1"></div>
+		</td>
+                <td> &nbsp;</td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas id="cLn" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                    &nbsp;
+                </td>
+            </tr>
+
+            </table>
+        </div>
+        
+    </center>
+</body>

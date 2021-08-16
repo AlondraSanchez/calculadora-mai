@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29/01/2019, 08:17:28 PM
+    Author     : Chezal
+*/
+body{
+    background-image: url(../img/azul.png);
+}
+
+.cajita {
+    border-radius: 30px;
+    width: 90%;
+    background-color: #f59aa3; /*Rosa*/
+    padding-bottom: 10px;
+    padding-top: 2px;
+}
+
+.cajita h1{
+    text-align: center;
+    font-family: fuente;
+}
+
+.cajita p{
+    text-align: center;
+    font-family: parrafo;
+    font-size: 280%; 
+}
+
+@font-face {
+    font-family: fuente;
+    src: url(tiza.woff);
+}
+@font-face {
+    font-family: parrafo;
+    src: url(fuente.woff);
+    
+}
+
+
+
+
+

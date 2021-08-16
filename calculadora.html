@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/estilito.css">
+        <script type="text/javascript" src="js/operaciones.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Calculadora b&aacutesica</title>
+    </head>
+    <body>
+    <center>
+    
+        <div class="cajita">
+            <h1>Calculadora de números complejos</h1>
+            <table width=90% align="center">
+                
+                <tr align="left">
+                    <td valign="middle" width="50%">
+                        <p style="margin: 15px">
+                            Z<sub>1</sub> = <input type="number" id="xz1"> + <b>i</b> <input type="number" id="yz1">
+                        <br>
+                        Z<sub>2</sub> = <input type="number" id="xz2"> + <b>i</b> <input type="number" id="yz2">
+                        <br>
+                        n = <input type="number" id="n">
+                        </p>
+                    </td>
+                    <td valign = "middle">
+                        <p style="font-size: 200%; text-align: left; margin: 15px" >
+                            <input type="checkbox" id="todo" onclick="seleccionarTodo()"> Seleccionar todo<br>
+                            <input type="checkbox" id="suma"> Z<sub>1</sub> + Z<sub>2</sub> <br>
+                            <input type="checkbox" id="resta"> Z<sub>1</sub> - Z<sub>2</sub> <br>
+                            <input type="checkbox" id="multiplicacion"> Z<sub>1</sub> * Z<sub>2</sub> <br>
+                            <input type="checkbox" id="division"> Z<sub>1</sub> / Z<sub>2</sub> <br>
+                            
+                        </p>
+
+                    </td>
+                    <td valign="middle" align="left">
+                        <p style="font-size: 200%; text-align: left; margin: 0px">
+                            <input type="checkbox" id="potencia"> (Z<sub>1</sub>) <sup>n</sup> <br>
+                            <input type="checkbox" id="raiz"> (Z<sub>1</sub>) <sup>1/n</sup> <br>
+                            <input type="checkbox" id="complemento"> Conjugado(Z<sub>1</sub>)<br>
+                            <input type="checkbox" id="distancia"> d(Z<sub>1</sub>, Z<sub>2</sub>) <br>
+                        </p>
+                        
+                    </td>
+		</tr>
+            </table>
+            <p>
+            <a style="color: #5b2e35; background-color: #f5e4c3;
+                text-decoration:none; padding: 10px; border-radius: 15px;"
+                onclick="validar()">Resolver
+            </a> &nbsp; &nbsp;
+            <a style="color: #5b2e35; background-color: #f5e4c3;
+                text-decoration:none; padding: 10px; border-radius: 15px;"
+                onclick="location.reload()">Limpiar
+            </a> &nbsp; &nbsp; 
+            <a style="color: #5b2e35; background-color: #f5e4c3;
+                text-decoration:none; padding: 10px; border-radius: 15px;"
+                href="index.html">Regresar
+            </a>
+            </p>
+        </div>  
+        <br><br>
+        <div class="cajita" id="resultados" style="display:none;">
+            
+        </div>
+            <br><br>
+            <div class="cajita" id="graficas" style="display:none;">
+            <table width = 80% align= "center">
+            <tr>
+                <td> <p> Suma </p>
+					<div id="cSuma1"></div>
+				</td>
+                <td> <p> Resta </p> <div id="cResta1"></div></td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas id="cSuma" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                <center>
+                    <canvas id="cResta" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td> <p> Multiplicacion </p> <div id="cMultiplicacion1"></div></td>
+                <td> <p> Division </p> <div id="cDivision1"></div></td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas 
+                        id="cMultiplicacion" 
+                        width="300" height="300" 
+                        style="border:1px solid #000000; 
+                        background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                <center>
+                    <canvas id="cDivision" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td> <p> Potencia </p> <div id="cPotencia1"></div></td>
+                <td> <p> Raiz </p> <div id="cRaiz1"></div></td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas id="cPotencia" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                <center>
+                    <canvas id="cRaiz" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td> <p> Conjugado </p> <div id="cComplemento1"></div></td>
+                <td> <p> Distancia </p> <div id="cDistancia1"></div></td>
+            </tr>
+            <tr>
+                <td>  
+                <center>
+                    <canvas id="cComplemento" 
+                            width="300" 
+                            height="300" 
+                            style="border:1px solid #000000; 
+                            background-color: #f5e4c3;"></canvas>
+                    </center>
+                </td>
+                <td> 
+                <center>
+                        <canvas id="cDistancia" 
+                                width="300" height="300"
+                                style="border:1px solid #000000;
+                                background-color: #f5e4c3;"></canvas>
+                        </center>
+                </td>
+            </tr>
+
+            </table>
+        </div>
+		
+    </center>
+    </body>
+</html>
